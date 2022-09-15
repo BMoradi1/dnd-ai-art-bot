@@ -66,7 +66,7 @@ async def reroll(ctx):
                     file = discord.File(arr, filename='art.png')
                     await msg.edit(content=f"“{prompt}” \n")
                     await ctx.send(file=file)
-    else
+    else:
         msg = await ctx.send("No previous generation detected")
 
 bot.run(os.environ["DISCORD_TOKEN"])
