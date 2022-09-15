@@ -47,7 +47,7 @@ async def dream(ctx, *, prompt):
                 await msg.edit(content=f"“{prompt}” \n")
                 await ctx.send(file=file)
 @bot.command()
-async def reroll(ctx, *):
+async def reroll(ctx):
     if(savedPrompt != "none")
         msg = await ctx.send(f"“{promptPrompt}”\n> Generating...")
         answers = stability_api.generate(prompt=prompt)
