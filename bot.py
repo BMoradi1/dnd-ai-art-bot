@@ -25,7 +25,7 @@ bot = commands.Bot(
     description="Make art.",
     intents=intents,
 )
-
+savedPrompt = "none"
 
 @bot.command()
 async def dream(ctx, *, prompt):
@@ -46,5 +46,27 @@ async def dream(ctx, *, prompt):
                 file = discord.File(arr, filename='art.png')
                 await msg.edit(content=f"“{prompt}” \n")
                 await ctx.send(file=file)
+@bot.command()
+async def reroll(ctx, *):
+    if(savedPrompt != "none")
+        msg = await ctx.send(f"“{promptPrompt}”\n> Generating...")
+        answers = stability_api.generate(prompt=prompt)
+        for resp in answers:
+            for artifact in resp.artifacts:
+                if artifact.finish_reason == generation.FILTER:
+                    warnings.warn(
+                        "Your request activated the API's safety filters and could not be processed."
+                        "Please modify the prompt and try again.")
+                    msg = await ctx.send("You have triggered the filter, please try again")
+                if artifact.type == generation.ARTIFACT_IMAGE:
+                    img = Image.open(io.BytesIO(artifact.binary))
+                    arr = io.BytesIO(artifact.binary)
+                    img.save(arr, format='PNG')
+                    arr.seek(0)
+                    file = discord.File(arr, filename='art.png')
+                    await msg.edit(content=f"“{prompt}” \n")
+                    await ctx.send(file=file)
+    else
+        msg = await ctx.send("No previous generation detected")
 
 bot.run(os.environ["DISCORD_TOKEN"])
