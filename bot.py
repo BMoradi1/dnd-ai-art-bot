@@ -37,7 +37,7 @@ async def dream(ctx, *, prompt):
                 warnings.warn(
                     "Your request activated the API's safety filters and could not be processed."
                     "Please modify the prompt and try again.")
-                 msg = await ctx.send("You have triggered the filter, please try again")
+                msg = await ctx.send("You have triggered the filter, please try again")
             if artifact.type == generation.ARTIFACT_IMAGE:
                 img = Image.open(io.BytesIO(artifact.binary))
                 arr = io.BytesIO(artifact.binary)
